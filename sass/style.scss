@@ -5,7 +5,8 @@ $retina-filename: "@2x";
 
 body {
   margin: 0; padding: 0;
-  background: #eee;
+  background: #fff;
+  text-align: center;
 }
 
 section {
@@ -24,6 +25,19 @@ section {
     text-decoration: none;
     border-bottom: 2px solid white;
   }
+  z-index:1;
+}
+
+img {
+  padding: 2px 4px;
+  -webkit-filter: grayscale(100%); 
+  -webkit-transition: -webkit-filter 2s; 
+  -webkit-transition-timing-function:ease;
+  z-index:-1;
+}
+
+img:hover {
+  -webkit-filter: grayscale(0%); 
 }
 
 #hours {
