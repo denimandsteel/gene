@@ -6,6 +6,7 @@ $(function() {
   //     $('body').append('<img src="' + item.images.low_resolution.url + '">');
   //   });
   // });
+  // http://dmolsen.com/2013/04/05/generating-access-tokens-for-instagram/
   $.ajax({
     dataType: 'jsonp',
     url: 'https://api.instagram.com/v1/locations/229295/media/recent',
