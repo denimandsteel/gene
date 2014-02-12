@@ -61,9 +61,6 @@ img:hover {
   -o-transform: translate(-50%, 20%);
   transform: translate(-50%, 20%); }
 
-img {
-  -webkit-filter: grayscale(1); }
-
 @media (max-width: 767px) {
   section {
     position: static;
