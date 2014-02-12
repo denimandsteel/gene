@@ -17,7 +17,7 @@ $(function() {
         currentURL = payload.pagination.next_url
         payload.data.forEach(function(item, index) {
           var resolution = 'low_resolution';
-          $image = $('<img>').attr('src', item.images['high_resolution'].url).attr('width', item.images[resolution].width).attr('height', item.images[resolution].height);
+          $image = $('<img>').attr('src', item.images['standard_resolution'].url).attr('width', item.images[resolution].width).attr('height', item.images[resolution].height);
           $('body').append($image);
         });
 
