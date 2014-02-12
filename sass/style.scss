@@ -9,8 +9,9 @@ body {
 }
 
 section {
+  z-index: 1;
   width: 320px;
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
   padding: 10px;
@@ -40,6 +41,10 @@ section {
   color: white;
   background: red;
   @include transform(translate(-50%, 20%));
+}
+
+img {
+  -webkit-filter: grayscale(1);
 }
 
 @media (max-width: 767px) {
