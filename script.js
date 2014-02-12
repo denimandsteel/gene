@@ -35,12 +35,29 @@ $(function() {
 
   loadMore();
 
-  $(window).bind('scroll', function() {
+  $(window).bind('resize', function() {
+    bindScrollToMovement();
+  });
+
+  function bindScrollToMovement() {
+    if ($(window).width() > 767) {
+      $(window).bind('scroll', moveThings);
+      moveThings();
+    } else {
+      $(window).unbind('scroll', moveThings);
+      $('#hours, #location, #contact').css('-webkit-transform', 'translate(0, 0)');
+    }
+  }
+
+  function moveThings() {
     var top = $(window).scrollTop();
     $('#hours').css('-webkit-transform', 'translate(-90%,' + (-70 - top/3.5) + '%)');
     $('#location').css('-webkit-transform', 'translate(20%,' + (-60 - top/2.5) + '%)');
     $('#contact').css('-webkit-transform', 'translate(-50%,' + (20 - top/2) + '%)');
-  });
+  }
+
+  bindScrollToMovement();
+  
 });
 
 
