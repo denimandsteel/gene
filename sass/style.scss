@@ -31,13 +31,14 @@ section {
 img {
   padding: 2px 4px;
   -webkit-filter: grayscale(100%); 
-  -webkit-transition: -webkit-filter 2s; 
+  -webkit-transition: -webkit-filter 10s; 
   -webkit-transition-timing-function:ease;
   z-index:-1;
 }
 
 img:hover {
-  -webkit-filter: grayscale(0%); 
+  -webkit-filter: grayscale(20%); 
+  -webkit-transition: -webkit-filter .1s; 
 }
 
 #hours {
