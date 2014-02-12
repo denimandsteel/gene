@@ -1,0 +1,55 @@
+@import "bourbon/bourbon";
+$retina-filename: "@2x";
+
+* { @include box-sizing(border-box); }
+
+body {
+  margin: 0; padding: 0;
+  background: #eee;
+}
+
+section {
+  width: 320px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  padding: 10px;
+  // @include transition(all 500ms ease-out);
+  p {
+    line-height: 1.5em;
+  }
+  a {
+    color: white;
+    text-decoration: none;
+    border-bottom: 2px solid white;
+  }
+}
+
+#hours {
+  background: yellow;
+  @include transform(translate(-90%, -70%));
+}
+
+#location {
+  color: white;
+  background: blue;
+  @include transform(translate(20%, -60%));
+}
+
+#contact {
+  color: white;
+  background: red;
+  @include transform(translate(-50%, 20%));
+}
+
+@media (max-width: 767px) {
+  section {
+    position: static;
+    top: auto;
+    left: auto;
+    margin: 0 auto;
+  }
+  #hours, #location, #contact {
+    @include transform(translate(0,0));
+  }
+}
