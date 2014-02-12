@@ -27,14 +27,20 @@ $(function() {
   }
 
   function bindScroll(){
-    console.log('bindscroll called!');
     if($(window).scrollTop() + $(window).height() > $(document).height() - 800) {
-       $(window).unbind('scroll');
+       $(window).unbind('scroll', bindScroll);
        loadMore();
     }
   }
 
   loadMore();
+
+  $(window).bind('scroll', function() {
+    var top = $(window).scrollTop();
+    $('#hours').css('-webkit-transform', 'translate(-90%,' + (-70 - top/3.5) + '%)');
+    $('#location').css('-webkit-transform', 'translate(20%,' + (-60 - top/2.5) + '%)');
+    $('#contact').css('-webkit-transform', 'translate(-50%,' + (20 - top/2) + '%)');
+  });
 });
 
 
