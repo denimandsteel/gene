@@ -35,16 +35,16 @@ $(function() {
     }
     else {
       $(window).unbind('scroll', moveCards);
-      $('#hours').css('-webkit-transform', 'rotate(-2deg) translate(0, 0)');
-      $('#location, #contact').css('-webkit-transform', 'translate(0, 0)');
+      $('#hours').css('transform', 'rotate(-2deg) translate(0, 0)');
+      $('#location, #contact').css('transform', 'translate(0, 0)');
     }
   }
 
   function moveCards() {
     var top = $(window).scrollTop();
-    $('#hours').css('-webkit-transform', 'rotate(-2deg) translate(-90%,' + (-70 - top/3.5) + '%)');
-    $('#location').css('-webkit-transform', 'translate(20%,' + (-60 - top/2.5) + '%)');
-    $('#contact').css('-webkit-transform', 'translate(-50%,' + (20 - top/2) + '%)');
+    $('#hours').css('transform', 'rotate(-2deg) translate(-90%,' + (-70 - top/3.5) + '%)');
+    $('#location').css('transform', 'translate(20%,' + (-60 - top/2.5) + '%)');
+    $('#contact').css('transform', 'translate(-50%,' + (20 - top/2) + '%)');
   }
 
   $(window).bind('resize', resize);
