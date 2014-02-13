@@ -10,7 +10,7 @@ $retina-filename: "@2x";
 // }
 body {
   background-color: #fff;
-  // background-image: url(../img/original_1391812082409_DSC_4806.jpg);
+  // background-image: url(img/original_1391812082409_DSC_4806.jpg);
   // background-size: cover;
   // background-repeat: no-repeat;
   // background-attachment: fixed;
@@ -307,7 +307,7 @@ img.instagram:hover {
 }
 
 .colour-bw #map { background-color: #000; }
-.colour-bw #bus-routes { @include retina-image('../img/bus-flag-bw', 9px 12px); }
+.colour-bw #bus-routes { @include retina-image('img/bus-flag-bw', 9px 12px); }
 
 .colour-blue {
   color: #00f;
@@ -315,7 +315,7 @@ img.instagram:hover {
 }
 
 .colour-blue #map { background-color: #00f; }
-.colour-blue #bus-routes { @include retina-image('../img/bus-flag-blue', 9px 12px); }
+.colour-blue #bus-routes { @include retina-image('img/bus-flag-blue', 9px 12px); }
 
 .colour-green {
   color: #000;
@@ -323,7 +323,7 @@ img.instagram:hover {
 }
 
 .colour-green #map { background-color: #000; }
-.colour-green #bus-routes { @include retina-image('../img/bus-flag-bw', 9px 12px); }
+.colour-green #bus-routes { @include retina-image('img/bus-flag-bw', 9px 12px); }
 
 .colour-red {
   color: #d80044;
@@ -331,7 +331,7 @@ img.instagram:hover {
 }
 
 .colour-red #map { background-color: #d80044; }
-.colour-red #bus-routes { @include retina-image('../img/bus-flag-red', 9px 12px); }
+.colour-red #bus-routes { @include retina-image('img/bus-flag-red', 9px 12px); }
 
 .colour-teal {
   color: #00b59f;
@@ -339,7 +339,7 @@ img.instagram:hover {
 }
 
 .colour-teal #map { background-color: #00b59f; }
-.colour-teal #bus-routes { @include retina-image('../img/bus-flag-teal', 9px 12px); }
+.colour-teal #bus-routes { @include retina-image('img/bus-flag-teal', 9px 12px); }
 
 .colour-orange {
   color: #de7100;
@@ -347,7 +347,7 @@ img.instagram:hover {
 }
 
 .colour-orange #map { background-color: #de7100; }
-.colour-orange #bus-routes { @include retina-image('../img/bus-flag-orange', 9px 12px); }
+.colour-orange #bus-routes { @include retina-image('img/bus-flag-orange', 9px 12px); }
 
 @media (max-width: 767px) {
   body {
