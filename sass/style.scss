@@ -3,17 +3,8 @@ $retina-filename: "@2x";
 
 * { @include box-sizing(border-box); }
 
-// body {
-//   margin: 0; padding: 0;
-//   background: #fff;
-//   text-align: center;
-// }
 body {
   background-color: #fff;
-  // background-image: url(img/original_1391812082409_DSC_4806.jpg);
-  // background-size: cover;
-  // background-repeat: no-repeat;
-  // background-attachment: fixed;
   margin: 0;
   font-family: "old-standard", TimesNewRoman, "Times New Roman", Times, serif;
   color: #fff;
@@ -52,38 +43,19 @@ i { font-style: normal; }
   z-index: 50;
 }
 
-// section {
-  // width: 320px;
-  // position: fixed;
-  // top: 50%;
-  // left: 50%;
-  // padding: 10px;
-  // @include transition(all 500ms ease-out);
-//   p {
-//     line-height: 1.5em;
-//   }
-//   a {
-//     color: white;
-//     text-decoration: none;
-//     border-bottom: 2px solid white;
-//   }
-//   z-index:2;
-//   box-shadow: 3px 3px 5px rgba(0,0,0,0.5);
-// }
-
 img.instagram {
-  padding: 4px;
+  border: 0;
+  padding: 2px 4px;
   filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale"); /* Firefox 10+, Firefox on Android */
   filter: gray; /* IE6-9 */
   -webkit-filter: grayscale(100%); /* Chrome 19+, Safari 6+, Safari 6+ iOS */
   -webkit-transition: -webkit-filter 10s ease; 
-  -webkit-transform: translateZ(0); // Fixes retina blurriness.
-}
-
-img.instagram:hover {
-  filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'1 0 0 0 0, 0 1 0 0 0, 0 0 1 0 0, 0 0 0 1 0\'/></filter></svg>#grayscale");
-  -webkit-filter: grayscale(20%);
-  -webkit-transition: -webkit-filter .1s ease; 
+  -webkit-transform: translateZ(0); /* Fixes retina blurriness. */
+  &:hover {
+    filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'1 0 0 0 0, 0 1 0 0 0, 0 0 1 0 0, 0 0 0 1 0\'/></filter></svg>#grayscale");
+    -webkit-filter: grayscale(20%);
+    -webkit-transition: -webkit-filter .1s ease; 
+  }
 }
 
 .images {
@@ -115,23 +87,6 @@ img.instagram:hover {
   }
 }
 
-// #hours {
-//   background: yellow;
-//   @include transform(rotate(-2deg) translate(-90%, -70%));
-// }
-
-// #location {
-//   color: white;
-//   background: blue;
-//   @include transform(translate(20%, -60%));
-// }
-
-// #contact {
-//   color: white;
-//   background: red;
-//   @include transform(translate(-50%, 20%));
-// }
-
 #gene {
   width: 120px;
   vertical-align: middle;
@@ -139,14 +94,13 @@ img.instagram:hover {
   background-color: #000;
   color: #fff;
   @include transform(translate(-320%, -320%));
-}
-
-#gene h1 {
-  font-size: 30px;
-  text-transform: uppercase;
-  /*font-family: "rtf-alexander-quill";*/
-  font-weight: bold;
-  font-family: NeueHaasGrotesk, "Neue Haas Grotesk", HelveticaNeue, "Helvetica Neue", Helvetica, sans-serif;
+  h1 {
+    font-size: 30px;
+    text-transform: uppercase;
+    /*font-family: "rtf-alexander-quill";*/
+    font-weight: bold;
+    font-family: NeueHaasGrotesk, "Neue Haas Grotesk", HelveticaNeue, "Helvetica Neue", Helvetica, sans-serif;  
+  }
 }
 
 #open-closed {
@@ -155,103 +109,82 @@ img.instagram:hover {
   color: #f60;
   border: 8px solid #fff;
   padding: 16px 12px 0 16px;
-  // z-index: 6;
-}
-
-#open-closed h2 {
-  font-family: "komu-a";
-  font-size: 84px;
-  letter-spacing: 1px;
-  line-height: 0.9;
+  h2 {
+    font-family: "komu-a";
+    font-size: 84px;
+    letter-spacing: 1px;
+    line-height: 0.9;
+  }
 }
 
 /* Cards */
 #hours {
   @include transform(translate(-100%, -40%));
-  // z-index: 7;
-}
-
-#hours dl, #hours dt, #hours dd {
-  margin: 0;
-  padding: 0;
-}
-
-#hours dt {
-  /*text-transform: lowercase;*/
-  /*font-family: "chippewa-falls";*/
-  /*letter-spacing: 1px;*/
-  /*font-size: 1.5em;*/
-  font-size: 1em;
-  line-height: 1;
-  margin-top: 1em;
-}
-
-#hours dd {
-  font-family: "lust";
-  font-size: 4.75em;
-  line-height: 0.75;
-  text-rendering: optimizeLegibility;
-  margin-top: 0.125em;
-}
-
-#hours dd i {
-  font-weight: normal;
-  font-family: Times, "Times New Roman", TimesNewRoman;
-  vertical-align: top;
-  line-height: 0.5;
+  dl, dt, dd {
+    margin: 0;
+    padding: 0;  
+  }
+  dt {
+    font-size: 1em;
+    line-height: 1;
+    margin-top: 1em;
+  }
+  dd {
+    font-family: "lust";
+    font-size: 4.75em;
+    line-height: 0.75;
+    text-rendering: optimizeLegibility;
+    margin-top: 0.125em;
+  }
+  dd i {
+    font-weight: normal;
+    font-family: Times, "Times New Roman", TimesNewRoman;
+    vertical-align: top;
+    line-height: 0.5;
+  }
 }
 
 #location {
   @include transform(translate(11%, -50%));
-  // z-index: 3;
-}
-
-#location img {
-  margin: 0.5em 0;
-}
-
-#location a:hover {
-  text-decoration: underline;
-}
-
-#location address {
-  font-style: normal;
-  margin-top: 0.5em;
-}
-
-#location #bus-routes {
-  margin: 0.5em 0 0 0;
-  background-repeat: no-repeat;
-  background-position: center left;
-  line-height: 1;
-  padding-left: 16px;
-}
-
-#location #bus-routes i {
-  /*font-family: "jaf-bernino-sans";*/
-  font-family: NeueHaasGrotesk, "Neue Haas Grotesk", HelveticaNeue, "Helvetica Neue", Helvetica, sans-serif;
-  font-weight: 600;
+  img {
+    margin: 0.5em 0;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+  address {
+    font-style: normal;
+    margin-top: 0.5em;
+  }
+  #bus-routes {
+    margin: 0.5em 0 0 0;
+    background-repeat: no-repeat;
+    background-position: center left;
+    line-height: 1;
+    padding-left: 16px;
+  }
+  #bus-routes i {
+    /*font-family: "jaf-bernino-sans";*/
+    font-family: NeueHaasGrotesk, "Neue Haas Grotesk", HelveticaNeue, "Helvetica Neue", Helvetica, sans-serif;
+    font-weight: 600;
+  }
 }
 
 #contact {
   @include transform(translate(-130%, 75%));
-  // z-index: 8;
+  div {
+    font-size: 24px;
+    font-family: "old-standard", TimesNewRoman, "Times New Roman", Times, serif;
+  }
+  i {
+    font-weight: bold;
+    display: inline-block;
+    width: 20px;
+    font-family: ArialUnicodeMS, "Arial Unicode MS";
+    font-size: 24px;
+    text-align: right;
+  }
 }
-
-#contact div {
-  font-size: 24px;
-  font-family: "old-standard", TimesNewRoman, "Times New Roman", Times, serif;
-}
-
-#contact i {
-  font-weight: bold;
-  display: inline-block;
-  width: 20px;
-  font-family: ArialUnicodeMS, "Arial Unicode MS";
-  font-size: 24px;
-  text-align: right;
-}
-
 
 /* Font options */
 
@@ -304,50 +237,44 @@ img.instagram:hover {
 .colour-bw {
   color: #000;
   background-color: #fff;
+  #map { background-color: #000; }
+  #bus-routes { @include retina-image('img/bus-flag-bw', 9px 12px); }
 }
-
-.colour-bw #map { background-color: #000; }
-.colour-bw #bus-routes { @include retina-image('img/bus-flag-bw', 9px 12px); }
 
 .colour-blue {
   color: #00f;
   background-color: #fff;
+  #map { background-color: #00f; }
+  #bus-routes { @include retina-image('img/bus-flag-blue', 9px 12px); }
 }
-
-.colour-blue #map { background-color: #00f; }
-.colour-blue #bus-routes { @include retina-image('img/bus-flag-blue', 9px 12px); }
 
 .colour-green {
   color: #000;
   background-color: #cf9;
+  #map { background-color: #000; }
+  #bus-routes { @include retina-image('img/bus-flag-bw', 9px 12px); }
 }
-
-.colour-green #map { background-color: #000; }
-.colour-green #bus-routes { @include retina-image('img/bus-flag-bw', 9px 12px); }
 
 .colour-red {
   color: #d80044;
   background-color: #fff5f8;
+  #map { background-color: #d80044; }
+  #bus-routes { @include retina-image('img/bus-flag-red', 9px 12px); }
 }
-
-.colour-red #map { background-color: #d80044; }
-.colour-red #bus-routes { @include retina-image('img/bus-flag-red', 9px 12px); }
 
 .colour-teal {
   color: #00b59f;
   background-color: #f3fff4;
+  #map { background-color: #00b59f; }
+  #bus-routes { @include retina-image('img/bus-flag-teal', 9px 12px); }
 }
-
-.colour-teal #map { background-color: #00b59f; }
-.colour-teal #bus-routes { @include retina-image('img/bus-flag-teal', 9px 12px); }
 
 .colour-orange {
   color: #de7100;
   background-color: #ffecdf;
+  #map { background-color: #de7100; }
+  #bus-routes { @include retina-image('img/bus-flag-orange', 9px 12px); }
 }
-
-.colour-orange #map { background-color: #de7100; }
-.colour-orange #bus-routes { @include retina-image('img/bus-flag-orange', 9px 12px); }
 
 @media (max-width: 767px) {
   body {
@@ -364,12 +291,10 @@ img.instagram:hover {
   }
   #gene {
     border: 2px solid white;
+    margin-top: 10px;
     margin-bottom: 10px;
   }
   #contact i {
     font-size: 16px;
   }
-  // #hours, #location, #contact {
-  //   @include transform(translate(0,0));
-  // }
 }
