@@ -58,6 +58,7 @@ $(function() {
   loadImages(function() {
     // If this is a big enough screen, load more images to fill.
     if (306*306*18 < $(window).height() * $(window).width()) {
+      $(window).unbind('scroll', infiniteScroll);
       loadImages();
     }
   });
