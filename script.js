@@ -13,7 +13,7 @@ $(function() {
         currentURL = payload.pagination.next_url
         payload.data.forEach(function(item, index) {
           var resolution = 'low_resolution';
-          $image = $('<img>').attr('src', item.images['standard_resolution'].url).attr('width', item.images[resolution].width).attr('height', item.images[resolution].height);
+          $image = $('<div class="image"><span><a href="' + item.link + '">' + item.user.username + '</a></span><img class="instagram" src="' + item.images['standard_resolution'].url + '" width="' + item.images[resolution].width + '" height="' + item.images[resolution].height + '"></div>');
           $('body').append($image);
         });
         $(window).bind('scroll', infiniteScroll);
@@ -35,16 +35,19 @@ $(function() {
     }
     else {
       $(window).unbind('scroll', moveCards);
-      $('#hours').css('transform', 'rotate(-2deg) translate(0, 0)');
-      $('#location, #contact').css('transform', 'translate(0, 0)');
+      // $('#hours').css('transform', 'rotate(-2deg) translate(0, 0)');
+      $('#gene, #open-closed, #hours, #location, #contact').css('transform', 'translate(0, 0)');
     }
   }
 
   function moveCards() {
     var top = $(window).scrollTop();
-    $('#hours').css('transform', 'rotate(-2deg) translate(-90%,' + (-70 - top/3.5) + '%)');
-    $('#location').css('transform', 'translate(20%,' + (-60 - top/2.5) + '%)');
-    $('#contact').css('transform', 'translate(-50%,' + (20 - top/2) + '%)');
+    // $('#hours').css('transform', 'rotate(-2deg) translate(-90%,' + (-70 - top/3.5) + '%)');
+    $('#gene').css('transform', 'translate(-320%,' + (-320 - top/4) + '%)');
+    $('#open-closed').css('transform', 'translate(-80%,' + (-140 - top/3.5) + '%)');
+    $('#hours').css('transform', 'translate(-100%,' + ( -40 - top/3) + '%)');
+    $('#location').css('transform', 'translate(11%,' + ( -50 - top/2.5) + '%)');
+    $('#contact').css('transform', 'translate(-150%,' + ( 75 - top/2) + '%)');
   }
 
   $(window).bind('resize', resize);
