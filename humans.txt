@@ -1,4 +1,4 @@
-GENE Coffee Bar's website was built in by hand in one 
+GENE Coffee Bar's website was built by hand in one 
 day by Todd Sieling, Tylor Sherman, Arian Khosravi,
 with design in code by Sam Dal Monte.
 
