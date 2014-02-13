@@ -17,6 +17,7 @@ $(function() {
           $('body').append($image);
         });
         $(window).bind('scroll', infiniteScroll);
+        $(window).bind('touchmove', infiniteScroll);
       }
     });
   }
@@ -24,6 +25,7 @@ $(function() {
   function infiniteScroll() {
     if ($(window).scrollTop() + $(window).height() > $(document).height() - 800) {
       $(window).unbind('scroll', infiniteScroll);
+      $(window).unbind('touchmove', infiniteScroll);
       loadImages();
     }
   }
@@ -31,10 +33,12 @@ $(function() {
   function resize() {
     if ($(window).width() > 767) {
       $(window).bind('scroll', moveCards);
+      $(window).bind('touchmove', moveCards);
       moveCards();
     }
     else {
       $(window).unbind('scroll', moveCards);
+      $(window).unbind('touchmove', moveCards);
       // $('#hours').css('transform', 'rotate(-2deg) translate(0, 0)');
       $('#gene, #open-closed, #hours, #location, #contact').css('transform', 'translate(0, 0)');
     }
@@ -47,7 +51,7 @@ $(function() {
     $('#open-closed').css('transform', 'translate(-80%,' + (-140 - top/3.5) + '%)');
     $('#hours').css('transform', 'translate(-100%,' + ( -40 - top/3) + '%)');
     $('#location').css('transform', 'translate(11%,' + ( -50 - top/2.5) + '%)');
-    $('#contact').css('transform', 'translate(-150%,' + ( 75 - top/2) + '%)');
+    $('#contact').css('transform', 'translate(-130%,' + ( 75 - top/2) + '%)');
   }
 
   $(window).bind('resize', resize);
