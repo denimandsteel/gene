@@ -1,7 +1,8 @@
 $(function() {
   var currentURL = 'https://api.instagram.com/v1/locations/229295/media/recent';
 
-  function loadImages() {
+  function loadImages(cb) {
+    console.log('loading')
     $.ajax({
       dataType: 'jsonp',
       url: currentURL,
@@ -13,11 +14,12 @@ $(function() {
         currentURL = payload.pagination.next_url
         payload.data.forEach(function(item, index) {
           var resolution = 'low_resolution';
-          $image = $('<div class="image"><span><a href="' + item.link + '">' + item.user.username + '</a></span><img class="instagram" src="' + item.images['standard_resolution'].url + '" width="' + item.images[resolution].width + '" height="' + item.images[resolution].height + '"></div>');
-          $('body').append($image);
+          $('<div class="image"><span><a href="' + item.link + '">' + item.user.username + '</a></span><img class="instagram" src="' + item.images[window.devicePixelRatio > 1 ? 'standard_resolution' : resolution].url + '" width="' + item.images[resolution].width + '" height="' + item.images[resolution].height + '"></div>').appendTo('.images');
         });
         $(window).bind('scroll', infiniteScroll);
-        $(window).bind('touchmove', infiniteScroll);
+        if (cb) {
+          cb();
+        }
       }
     });
   }
@@ -25,28 +27,25 @@ $(function() {
   function infiniteScroll() {
     if ($(window).scrollTop() + $(window).height() > $(document).height() - 800) {
       $(window).unbind('scroll', infiniteScroll);
-      $(window).unbind('touchmove', infiniteScroll);
       loadImages();
     }
   }
 
   function resize() {
     if ($(window).width() > 767) {
-      $(window).bind('scroll', moveCards);
-      $(window).bind('touchmove', moveCards);
-      moveCards();
+      if (!(('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch)) {
+        $(window).bind('scroll', moveCards);
+        moveCards();
+      }
     }
     else {
       $(window).unbind('scroll', moveCards);
-      $(window).unbind('touchmove', moveCards);
-      // $('#hours').css('transform', 'rotate(-2deg) translate(0, 0)');
       $('#gene, #open-closed, #hours, #location, #contact').css('transform', 'translate(0, 0)');
     }
   }
 
   function moveCards() {
     var top = $(window).scrollTop();
-    // $('#hours').css('transform', 'rotate(-2deg) translate(-90%,' + (-70 - top/3.5) + '%)');
     $('#gene').css('transform', 'translate(-320%,' + (-320 - top/4) + '%)');
     $('#open-closed').css('transform', 'translate(-80%,' + (-140 - top/3.5) + '%)');
     $('#hours').css('transform', 'translate(-100%,' + ( -40 - top/3) + '%)');
@@ -55,7 +54,38 @@ $(function() {
   }
 
   $(window).bind('resize', resize);
-  loadImages();
+  loadImages(function() {
+    // If this is a big enough screen, load more images to fill.
+    if (306*306*18 < $(window).height() * $(window).width()) {
+      loadImages();
+    }
+  });
   resize();
+  var fontClasses = [
+    'font-shaded',
+    'font-chippewa',
+    'font-shlop',
+    'font-lust',
+    'font-bello',
+    'font-alexander',
+  ];
+  var colourClasses = [
+    'colour-bw',
+    'colour-blue',
+    'colour-green',
+    'colour-red',
+    'colour-teal',
+    'colour-orange',
+  ];
+  $('#hours, #location, #contact').each(function(index, element) {
+    var fontIndex = Math.floor(Math.random()*fontClasses.length);
+    var font = fontClasses[fontIndex];
+    fontClasses.splice(fontIndex, 1);
+    var colourIndex = Math.floor(Math.random()*colourClasses.length);
+    var colour = colourClasses[colourIndex];
+    colourClasses.splice(colourIndex, 1);
+    console.log(fontClasses, colourClasses);
+    $(element).addClass(font + ' ' + colour);
+  });
   
 });

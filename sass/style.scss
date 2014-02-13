@@ -14,11 +14,9 @@ body {
   // background-size: cover;
   // background-repeat: no-repeat;
   // background-attachment: fixed;
-  padding: 10px;
   margin: 0;
   font-family: "old-standard", TimesNewRoman, "Times New Roman", Times, serif;
   color: #fff;
-  text-align: center;
 }
 
 h1, h2 {
@@ -42,11 +40,10 @@ a:hover {
 i { font-style: normal; }
 
 .card {
-  text-align: left;
   width: 300px;
   margin: 8px 8px 8px 0;
   padding: 16px;
-  position: fixed;
+  position: absolute;
   top: 50%;
   left: 50%;
   z-index:2;
@@ -80,6 +77,7 @@ img.instagram {
   filter: gray; /* IE6-9 */
   -webkit-filter: grayscale(100%); /* Chrome 19+, Safari 6+, Safari 6+ iOS */
   -webkit-transition: -webkit-filter 10s ease; 
+  -webkit-transform: translateZ(0); // Fixes retina blurriness.
 }
 
 img.instagram:hover {
@@ -88,18 +86,24 @@ img.instagram:hover {
   -webkit-transition: -webkit-filter .1s ease; 
 }
 
+.images {
+  padding: 10px;
+  text-align: center;
+}
+
 .image {
   display: inline-block;
   width: 306px;
   height: 306px;
   position: relative;
   span {
+    font-family: NeueHaasGrotesk, "Neue Haas Grotesk", HelveticaNeue, "Helvetica Neue", Helvetica, sans-serif;
     color: white;
     opacity: 0;
     padding: 2px 6px;
     background: rgba(0,0,0,0.2);
     position: absolute;
-    bottom: 2px;
+    bottom: 4px;
     right: 4px;
     z-index: 1;
     @include transition(1s opacity ease);
@@ -161,96 +165,6 @@ img.instagram:hover {
   line-height: 0.9;
 }
 
-/* Font options */
-
-.font-shaded h2 {
-  font-family: "gothic-open-shaded";
-  font-size: 48px;
-  letter-spacing: -2px;
-}
-
-.font-chippewa h2 {
-  text-transform: lowercase;
-  font-family: "chippewa-falls";
-  font-size: 72px;
-  margin: -0.1em 0 0.25em 0;
-  line-height: 0.7;
-}
-
-.font-shlop h2 {
-  font-family: "shlop";
-  font-size: 66px;
-  letter-spacing: 1px;
-  line-height: 0.9;
-  margin-bottom: 12px;
-}
-
-.font-lust h2 {
-  font-family: "lust";
-  font-size: 51px;
-  font-style: italic;
-  line-height: 0.9;
-  margin-bottom: 12px;
-}
-
-.font-bello h2 {
-  font-family: "bello-caps";
-  font-size: 66px;
-  line-height: 0.7;
-  margin-bottom: 12px;
-}
-
-.font-alexander h2 {
-  font-family: "rtf-alexander-quill";
-  font-size: 60px;
-  line-height: 0.9;
-  margin-bottom: 12px;
-}
-
-/* Colour options */
-
-.colour-bw {
-  color: #000;
-  background-color: #fff;
-}
-
-.colour-bw #map { background-color: #000; }
-
-.colour-blue {
-  color: #00f;
-  background-color: #fff;
-}
-
-.colour-blue #map { background-color: #00f; }
-
-.colour-green {
-  color: #000;
-  background-color: #cf9;
-}
-
-.colour-green #map { background-color: #000; }
-
-.colour-red {
-  color: #d80044;
-  background-color: #fff5f8;
-}
-
-.colour-red #map { background-color: #d80044; }
-
-.colour-teal {
-  color: #00b59f;
-  background-color: #f3fff4;
-}
-
-.colour-teal #map { background-color: #00b59f; }
-
-.colour-orange {
-  color: #de7100;
-  background-color: #ffecdf;
-}
-
-.colour-orange #map { background-color: #de7100; }
-
 /* Cards */
 #hours {
   @include transform(translate(-100%, -40%));
@@ -307,20 +221,10 @@ img.instagram:hover {
 
 #location #bus-routes {
   margin: 0.5em 0 0 0;
-  background-image: url(../img/bus-flag.png);
   background-repeat: no-repeat;
   background-position: center left;
-  background-size: 9px 12px;
   line-height: 1;
   padding-left: 16px;
-}
-
-@media 
-(-webkit-min-device-pixel-ratio: 2), 
-(min-resolution: 192dpi) {
-  #location #bus-routes {
-    background-image: url(../img/bus-flag@2x.png);
-  }
 }
 
 #location #bus-routes i {
@@ -348,6 +252,103 @@ img.instagram:hover {
   text-align: right;
 }
 
+
+/* Font options */
+
+.font-shaded h2 {
+  font-family: "gothic-open-shaded";
+  font-size: 48px;
+  letter-spacing: -2px;
+}
+
+.font-chippewa h2 {
+  text-transform: lowercase;
+  font-family: "chippewa-falls";
+  font-size: 72px;
+  margin: -0.1em 0 0.25em 0;
+  line-height: 0.7;
+}
+
+.font-shlop h2 {
+  font-family: "shlop";
+  font-size: 66px;
+  letter-spacing: 1px;
+  line-height: 0.9;
+  margin-bottom: 12px;
+}
+
+.font-lust h2 {
+  font-family: "lust";
+  font-size: 51px;
+  font-style: italic;
+  line-height: 0.9;
+  margin-bottom: 12px;
+}
+
+.font-bello h2 {
+  font-family: "bello-caps";
+  font-size: 66px;
+  line-height: 0.7;
+  margin-bottom: 12px;
+}
+
+.font-alexander h2 {
+  font-family: "rtf-alexander-quill";
+  font-size: 60px;
+  line-height: 0.9;
+  margin-bottom: 12px;
+}
+
+/* Colour options */
+
+.colour-bw {
+  color: #000;
+  background-color: #fff;
+}
+
+.colour-bw #map { background-color: #000; }
+.colour-bw #bus-routes { @include retina-image('../img/bus-flag-bw', 9px 12px); }
+
+.colour-blue {
+  color: #00f;
+  background-color: #fff;
+}
+
+.colour-blue #map { background-color: #00f; }
+.colour-blue #bus-routes { @include retina-image('../img/bus-flag-blue', 9px 12px); }
+
+.colour-green {
+  color: #000;
+  background-color: #cf9;
+}
+
+.colour-green #map { background-color: #000; }
+.colour-green #bus-routes { @include retina-image('../img/bus-flag-bw', 9px 12px); }
+
+.colour-red {
+  color: #d80044;
+  background-color: #fff5f8;
+}
+
+.colour-red #map { background-color: #d80044; }
+.colour-red #bus-routes { @include retina-image('../img/bus-flag-red', 9px 12px); }
+
+.colour-teal {
+  color: #00b59f;
+  background-color: #f3fff4;
+}
+
+.colour-teal #map { background-color: #00b59f; }
+.colour-teal #bus-routes { @include retina-image('../img/bus-flag-teal', 9px 12px); }
+
+.colour-orange {
+  color: #de7100;
+  background-color: #ffecdf;
+}
+
+.colour-orange #map { background-color: #de7100; }
+.colour-orange #bus-routes { @include retina-image('../img/bus-flag-orange', 9px 12px); }
+
 @media (max-width: 767px) {
   body {
     background-color: #000;
@@ -357,6 +358,16 @@ img.instagram:hover {
     top: auto;
     left: auto;
     margin: 0 auto;
+  }
+  .images {
+    padding: 0px;
+  }
+  #gene {
+    border: 2px solid white;
+    margin-bottom: 10px;
+  }
+  #contact i {
+    font-size: 16px;
   }
   // #hours, #location, #contact {
   //   @include transform(translate(0,0));
