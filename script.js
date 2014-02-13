@@ -3,7 +3,7 @@ $(function() {
   var infiniteScrollPage = 0;
 
   function loadImages(cb) {
-    ga('send', 'event', 'loadImages', ++infiniteScrollPage);
+    ga('send', 'event', 'Load Images', ++infiniteScrollPage);
     $.ajax({
       dataType: 'jsonp',
       url: currentURL,
