@@ -54,15 +54,6 @@ $(function() {
     $('#contact').css('transform', 'translate(-130%,' + ( 75 - top/2) + '%)');
   }
 
-  $(window).bind('resize', resize);
-  loadImages(function() {
-    // If this is a big enough screen, load more images to fill.
-    if (306*306*18 < $(window).height() * $(window).width()) {
-      $(window).unbind('scroll', infiniteScroll);
-      loadImages();
-    }
-  });
-  resize();
   var fontClasses = [
     'font-shaded',
     'font-chippewa',
@@ -88,5 +79,15 @@ $(function() {
     colourClasses.splice(colourIndex, 1);
     $(element).addClass(font + ' ' + colour);
   });
+
+  $(window).bind('resize', resize);
+  loadImages(function() {
+    // If this is a big enough screen, load more images to fill.
+    if (306*306*18 < $(window).height() * $(window).width()) {
+      $(window).unbind('scroll', infiniteScroll);
+      loadImages();
+    }
+  });
+  resize();
   
 });
