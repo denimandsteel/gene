@@ -34,11 +34,11 @@ img:hover {
 
 #hours {
   background: yellow;
-  -webkit-transform: translate(-90%, -70%);
-  -moz-transform: translate(-90%, -70%);
-  -ms-transform: translate(-90%, -70%);
-  -o-transform: translate(-90%, -70%);
-  transform: translate(-90%, -70%); }
+  -webkit-transform: rotate(-2deg) translate(-90%, -70%);
+  -moz-transform: rotate(-2deg) translate(-90%, -70%);
+  -ms-transform: rotate(-2deg) translate(-90%, -70%);
+  -o-transform: rotate(-2deg) translate(-90%, -70%);
+  transform: rotate(-2deg) translate(-90%, -70%); }
 
 #location {
   color: white;
