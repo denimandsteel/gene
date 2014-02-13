@@ -1,8 +1,9 @@
 $(function() {
   var currentURL = 'https://api.instagram.com/v1/locations/229295/media/recent';
+  var infiniteScrollPage = 0;
 
   function loadImages(cb) {
-    console.log('loading')
+    ga('send', 'event', 'loadImages', ++infiniteScrollPage);
     $.ajax({
       dataType: 'jsonp',
       url: currentURL,
@@ -84,7 +85,6 @@ $(function() {
     var colourIndex = Math.floor(Math.random()*colourClasses.length);
     var colour = colourClasses[colourIndex];
     colourClasses.splice(colourIndex, 1);
-    console.log(fontClasses, colourClasses);
     $(element).addClass(font + ' ' + colour);
   });
   
