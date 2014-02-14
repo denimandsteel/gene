@@ -196,42 +196,42 @@ i { font-style: normal; }
   color: #000;
   background-color: #fff;
   #map { background-color: #000; }
-  #bus-routes { @include retina-image('img/bus-flag-bw', 9px 12px); }
+  #bus-routes { @include retina-image("img/bus-flag-bw", 9px 12px); }
 }
 
 .colour-blue {
   color: #00f;
   background-color: #fff;
   #map { background-color: #00f; }
-  #bus-routes { @include retina-image('img/bus-flag-blue', 9px 12px); }
+  #bus-routes { @include retina-image("img/bus-flag-blue", 9px 12px); }
 }
 
 .colour-green {
   color: #000;
   background-color: #cf9;
   #map { background-color: #000; }
-  #bus-routes { @include retina-image('img/bus-flag-bw', 9px 12px); }
+  #bus-routes { @include retina-image("img/bus-flag-bw", 9px 12px); }
 }
 
 .colour-red {
   color: #d80044;
   background-color: #fff5f8;
   #map { background-color: #d80044; }
-  #bus-routes { @include retina-image('img/bus-flag-red', 9px 12px); }
+  #bus-routes { @include retina-image("img/bus-flag-red", 9px 12px); }
 }
 
 .colour-teal {
   color: #00b59f;
   background-color: #f3fff4;
   #map { background-color: #00b59f; }
-  #bus-routes { @include retina-image('img/bus-flag-teal', 9px 12px); }
+  #bus-routes { @include retina-image("img/bus-flag-teal", 9px 12px); }
 }
 
 .colour-orange {
   color: #de7100;
   background-color: #ffecdf;
   #map { background-color: #de7100; }
-  #bus-routes { @include retina-image('img/bus-flag-orange', 9px 12px); }
+  #bus-routes { @include retina-image("img/bus-flag-orange", 9px 12px); }
 }
 
 .images {
