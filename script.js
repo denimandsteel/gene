@@ -1,6 +1,6 @@
 $(function() {
 
-  /* Handle infinite scroll and add images to background */
+  /* Handle infinite scroll and add images to background. */
 
   var currentURL = 'https://api.instagram.com/v1/locations/229295/media/recent';
   var scrollPage = 0;
