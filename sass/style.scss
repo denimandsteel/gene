@@ -104,11 +104,13 @@ img.instagram {
 }
 
 #open-closed {
+  display: none;
   @include transform(translate(-80%, -140%));
   background-color: #000;
   color: #f60;
   border: 8px solid #fff;
   padding: 16px 12px 0 16px;
+  &.open { display: block; }
   h2 {
     font-family: "komu-a";
     font-size: 84px;

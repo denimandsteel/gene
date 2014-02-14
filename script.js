@@ -80,6 +80,15 @@ $(function() {
     $(element).addClass(font + ' ' + colour);
   });
 
+  var currentDate = new Date();
+  console.log(currentDate.getDate());
+  var openHour = [0, 6].indexOf(currentDate.getDay()) !== -1 ? 16 : 15;
+  var open = new Date(Date.UTC(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate(), openHour, 30, 0));
+  var close = new Date(Date.UTC(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate(), openHour+10, 30+30, 0));
+  if (open < currentDate && currentDate < close) {
+    $('#open-closed').addClass('open');
+  }
+
   $(window).bind('resize', resize);
   loadImages(function() {
     // If this is a big enough screen, load more images to fill.
