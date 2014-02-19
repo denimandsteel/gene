@@ -275,6 +275,14 @@ i { font-style: normal; }
   }
 }
 
+@media (max-width: 938px) {
+  body { background-color: red; }
+  .image {
+    width: 245px; height: 245px;
+    img { width: 245px; height: 245px; }
+  }
+}
+
 @media (max-width: 767px) {
   body {
     background-color: #000;
