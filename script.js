@@ -2,6 +2,12 @@ $(function() {
 
   /* Handle infinite scroll and add images to background. */
 
+  var imageLocations = [
+    'https://api.instagram.com/v1/locations/250042503/media/recent',
+    'https://api.instagram.com/v1/locations/235275822/media/recent',
+    'https://api.instagram.com/v1/locations/317377480/media/recent',
+    'https://api.instagram.com/v1/locations/229295/media/recent',
+  ];
   var currentURL = 'https://api.instagram.com/v1/locations/229295/media/recent';
   var scrollPage = 0;
 
@@ -13,26 +19,51 @@ $(function() {
   }
 
   function addImages(cb) {
+    var images = [];
+    var todo = imageLocations.length;
+
     ga('send', 'event', 'Load Images', ++scrollPage);
-    $.ajax({
-      dataType: 'jsonp',
-      url: currentURL,
-      data: {
-        access_token: '1090248051.1d1d36f.d24a1a83cfc14bb8b337245827769d42'
-      }
-    }).done(function(payload) {
-      if (currentURL !== payload.pagination.next_url) {
-        currentURL = payload.pagination.next_url;
-        payload.data.forEach(function(item) {
-          var resolution = 'low_resolution';
-          $('<div class="image"><span><a href="' + item.link + '">' + item.user.username + '</a></span><img src="' + item.images[window.devicePixelRatio > 1 ? 'standard_resolution' : resolution].url + '" width="' + item.images[resolution].width + '" height="' + item.images[resolution].height + '"></div>').appendTo('.images');
+
+    imageLocations.forEach(function(item, index) {
+      if (typeof imageLocations[index] !== 'undefined') {
+        fetchImages(index, function(data) {
+          images = images.concat(data);
+          if (--todo <= 0) {
+            done();
+          }
         });
-        $(window).bind('scroll', scroll);
-        if (cb) {
-          cb();
-        }
+      }
+      else if (--todo <= 0) {
+        done();
       }
     });
+
+    function fetchImages(index, cb) {
+      $.ajax({
+        dataType: 'jsonp',
+        url: imageLocations[index],
+        data: {
+          access_token: '1090248051.1d1d36f.d24a1a83cfc14bb8b337245827769d42'
+        }
+      }).done(function(payload) {
+        if (imageLocations[index] !== payload.pagination.next_url) {
+          imageLocations[index] = payload.pagination.next_url;
+          cb(payload.data);
+        }
+      });
+    }
+
+    function done() {
+      images = images.sort(function(a, b) { return b.created_time - a.created_time; });
+      images.forEach(function(item) {
+        var resolution = 'low_resolution';
+        $('<div class="image"><span><a href="' + item.link + '">' + item.user.username + '</a></span><img src="' + item.images[window.devicePixelRatio > 1 ? 'standard_resolution' : resolution].url + '" width="' + item.images[resolution].width + '" height="' + item.images[resolution].height + '"></div>').appendTo('.images');
+      });
+      $(window).bind('scroll', scroll);
+      if (cb) {
+        cb();
+      }
+    }
   }
 
   addImages(function() {
