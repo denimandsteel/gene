@@ -131,7 +131,7 @@ i { font-style: normal; }
 #contact {
   @include transform(translate(-130%, 75%));
   div {
-    font-size: 24px;
+    font-size: 22px;
     font-family: "old-standard", TimesNewRoman, "Times New Roman", Times, serif;
   }
   i {
@@ -139,7 +139,7 @@ i { font-style: normal; }
     display: inline-block;
     width: 20px;
     font-family: ArialUnicodeMS, "Arial Unicode MS";
-    font-size: 24px;
+    font-size: 22px;
     text-align: right;
   }
 }
