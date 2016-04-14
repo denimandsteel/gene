@@ -6,7 +6,7 @@ $(function() {
     'https://api.instagram.com/v1/locations/250042503/media/recent',
     'https://api.instagram.com/v1/locations/235275822/media/recent',
     'https://api.instagram.com/v1/locations/317377480/media/recent',
-    'https://api.instagram.com/v1/locations/229295/media/recent',
+    // 'https://api.instagram.com/v1/locations/229295/media/recent',
   ];
   var currentURL = 'https://api.instagram.com/v1/locations/229295/media/recent';
   var scrollPage = 0;
