@@ -43,7 +43,8 @@ $(function() {
         dataType: 'jsonp',
         url: imageLocations[index],
         data: {
-          access_token: '1090248051.1d1d36f.d24a1a83cfc14bb8b337245827769d42'
+          // access_token: '1090248051.1d1d36f.d24a1a83cfc14bb8b337245827769d42'
+          access_token: '1090248051.1677ed0.b6ece2ccc9c54d8bb61aa97e83e5485e'
         }
       }).done(function(payload) {
         if (imageLocations[index] !== payload.pagination.next_url) {
