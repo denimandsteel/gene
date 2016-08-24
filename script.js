@@ -18,7 +18,8 @@ $(function() {
   //   }
   // }
 
-$.get('http://localhost:3000/images/', function(images) {
+// on local: http://localhost:3000/images/
+$.get('https://gene-server.herokuapp.com/images', function(images) {
   images.forEach(function(image) {
     var resolution = 'low_resolution';
     $('<div class="image"><span><a href="' + image.link + '">' + image.user + '</a></span><img src="' + image.url + '" width="450" height="450"></div>').appendTo('.images');
