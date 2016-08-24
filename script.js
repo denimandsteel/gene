@@ -2,78 +2,87 @@ $(function() {
 
   /* Handle infinite scroll and add images to background. */
 
-  var imageLocations = [
-    'https://api.instagram.com/v1/locations/250042503/media/recent',
-    'https://api.instagram.com/v1/locations/235275822/media/recent',
-    'https://api.instagram.com/v1/locations/317377480/media/recent',
-    // 'https://api.instagram.com/v1/locations/229295/media/recent',
-  ];
-  var currentURL = 'https://api.instagram.com/v1/locations/229295/media/recent';
-  var scrollPage = 0;
+  // var imageLocations = [
+  //   'https://api.instagram.com/v1/locations/250042503/media/recent',
+  //   'https://api.instagram.com/v1/locations/235275822/media/recent',
+  //   'https://api.instagram.com/v1/locations/317377480/media/recent',
+  //   // 'https://api.instagram.com/v1/locations/229295/media/recent',
+  // ];
+  // var currentURL = 'https://api.instagram.com/v1/locations/229295/media/recent';
+  // var scrollPage = 0;
 
-  function scroll() {
-    if ($(window).scrollTop() + $(window).height() > $(document).height() - 800) {
-      $(window).unbind('scroll', scroll);
-      addImages();
-    }
-  }
+  // function scroll() {
+  //   if ($(window).scrollTop() + $(window).height() > $(document).height() - 800) {
+  //     $(window).unbind('scroll', scroll);
+  //     addImages();
+  //   }
+  // }
 
-  function addImages(cb) {
-    var images = [];
-    var todo = imageLocations.length;
-
-    ga('send', 'event', 'Load Images', ++scrollPage);
-
-    imageLocations.forEach(function(item, index) {
-      if (typeof imageLocations[index] !== 'undefined') {
-        fetchImages(index, function(data) {
-          images = images.concat(data);
-          if (--todo <= 0) {
-            done();
-          }
-        });
-      }
-      else if (--todo <= 0) {
-        done();
-      }
-    });
-
-    function fetchImages(index, cb) {
-      $.ajax({
-        dataType: 'jsonp',
-        url: imageLocations[index],
-        data: {
-          // access_token: '1090248051.1d1d36f.d24a1a83cfc14bb8b337245827769d42'
-          access_token: '1090248051.1677ed0.b6ece2ccc9c54d8bb61aa97e83e5485e'
-        }
-      }).done(function(payload) {
-        if (imageLocations[index] !== payload.pagination.next_url) {
-          imageLocations[index] = payload.pagination.next_url;
-          cb(payload.data);
-        }
-      });
-    }
-
-    function done() {
-      images = images.sort(function(a, b) { return b.created_time - a.created_time; });
-      images.forEach(function(item) {
-        var resolution = 'low_resolution';
-        $('<div class="image"><span><a href="' + item.link + '">' + item.user.username + '</a></span><img src="' + item.images[window.devicePixelRatio > 1 ? 'standard_resolution' : resolution].url + '" width="' + item.images[resolution].width + '" height="' + item.images[resolution].height + '"></div>').appendTo('.images');
-      });
-      $(window).bind('scroll', scroll);
-      if (cb) {
-        cb();
-      }
-    }
-  }
-
-  addImages(function() {
-    // If this is a big enough screen, load more images to fill.
-    if (306 * 306 * 18 < $(window).height() * $(window).width()) {
-      $(window).unbind('scroll', scroll);
-      addImages();
-    }
+$.get('http://localhost:3000/images/', function(images) {
+  images.forEach(function(image) {
+    var resolution = 'low_resolution';
+    $('<div class="image"><span><a href="' + image.link + '">' + image.user + '</a></span><img src="' + image.url + '" width="450" height="450"></div>').appendTo('.images');
   });
+})
+// https://api.instagram.com/v1/media/shortcode/BJavyFgA1hc?access_token=1090248051.1677ed0.b6ece2ccc9c54d8bb61aa97e83e5485e
+// https://www.instagram.com/p/BJavyFgA1hc/
+  // function addImages(cb) {
+  //   // var images = [];
+  //   var images = ['https://www.instagram.com/p/BJavyFgA1hc/', 'https://www.instagram.com/p/BI3HA-HA1xz/'];
+  //   var todo = imageLocations.length;
+
+  //   ga('send', 'event', 'Load Images', ++scrollPage);
+
+  //   imageLocations.forEach(function(item, index) {
+  //     if (typeof imageLocations[index] !== 'undefined') {
+  //       fetchImages(index, function(data) {
+  //         images = images.concat(data);
+  //         if (--todo <= 0) {
+  //           done();
+  //         }
+  //       });
+  //     }
+  //     else if (--todo <= 0) {
+  //       done();
+  //     }
+  //   });
+
+  //   function fetchImages(index, cb) {
+  //     $.ajax({
+  //       dataType: 'jsonp',
+  //       url: imageLocations[index],
+  //       data: {
+  //         // access_token: '1090248051.1d1d36f.d24a1a83cfc14bb8b337245827769d42'
+  //         access_token: '1090248051.1677ed0.b6ece2ccc9c54d8bb61aa97e83e5485e'
+  //       }
+  //     }).done(function(payload) {
+  //       if (imageLocations[index] !== payload.pagination.next_url) {
+  //         imageLocations[index] = payload.pagination.next_url;
+  //         cb(payload.data);
+  //       }
+  //     });
+  //   }
+
+  //   function done() {
+  //     images = images.sort(function(a, b) { return b.created_time - a.created_time; });
+  //     images.forEach(function(item) {
+  //       var resolution = 'low_resolution';
+  //       $('<div class="image"><span><a href="' + item.link + '">' + item.user.username + '</a></span><img src="' + item.images[window.devicePixelRatio > 1 ? 'standard_resolution' : resolution].url + '" width="' + item.images[resolution].width + '" height="' + item.images[resolution].height + '"></div>').appendTo('.images');
+  //     });
+  //     $(window).bind('scroll', scroll);
+  //     if (cb) {
+  //       cb();
+  //     }
+  //   }
+  // }
+
+  // addImages(function() {
+  //   // If this is a big enough screen, load more images to fill.
+  //   if (306 * 306 * 18 < $(window).height() * $(window).width()) {
+  //     $(window).unbind('scroll', scroll);
+  //     addImages();
+  //   }
+  // });
 
 
   /* If the browser is responsive enough, get the cards to fly out. */
