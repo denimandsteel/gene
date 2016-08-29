@@ -22,7 +22,7 @@ $(function() {
 $.get('https://gene-server.herokuapp.com/images', function(images) {
   images.forEach(function(image) {
     var resolution = 'low_resolution';
-    $('<div class="image"><span><a href="' + image.link + '">' + image.user + '</a></span><img src="' + image.url + '" width="450" height="450"></div>').appendTo('.images');
+    $('<div class="image"><span><a href="' + image.link + '">' + image.user + '</a></span><img src="' + image.url + '"></div>').appendTo('.images');
   });
 })
 // https://api.instagram.com/v1/media/shortcode/BJavyFgA1hc?access_token=1090248051.1677ed0.b6ece2ccc9c54d8bb61aa97e83e5485e
